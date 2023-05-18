@@ -41,3 +41,12 @@ stages:
         tags: |
           $(tag)
           latest
+    - task: Docker@2
+      displayName: Push container image to Azure Container Registry
+      inputs:
+        containerRegistry: 'azure_dp'
+        repository: 'frontendandbackend'
+        command: 'push'
+        tags: |
+          $(Build.BuildId)
+          latest
