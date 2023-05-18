@@ -23,8 +23,10 @@ stages:
     - task: Docker@2
       displayName: Build an image backend
       inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/backend/Dockerfile'
+        containerRegistry: 'azure_dp'
+        repository: 'frontendandbackend'
+        command: 'build'
+        Dockerfile: '**/Dockerfile'
         tags: |
           $(tag)
           latest
@@ -32,8 +34,10 @@ stages:
     - task: Docker@2
       displayName: Build an image frontend
       inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/frontend/Dockerfile'
+        containerRegistry: 'azure_dp'
+        repository: 'frontendandbackend'
+        command: 'build'
+        Dockerfile: '**/Dockerfile'
         tags: |
           $(tag)
           latest
